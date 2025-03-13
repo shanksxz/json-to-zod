@@ -29,7 +29,7 @@ export function JsonToZodConverter() {
 		try {
 			const parsedJson = JSON.parse(jsonInput);
 			const schema = jsonToZodString(parsedJson);
-			setZodSchema(`schema = ${schema}`);
+			setZodSchema(`import { z } from "zod";\n\nconst schema = ${schema}`);
 		} catch (err) {
 			setError(err instanceof Error ? err.message : "Invalid JSON");
 			toast.error(err instanceof Error ? err.message : "Invalid JSON");
